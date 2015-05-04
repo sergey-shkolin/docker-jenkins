@@ -1,0 +1,15 @@
+ansicolor:0.4.1
+git:2.3.5
+github:1.11.3
+github-api:1.67
+scm-api:0.2
+git-client:1.16.1
+credentials:1.22
+swarm:1.24
+envinject:1.91.2
+build-pipeline-plugin:1.4.7
+delivery-pipeline-plugin:0.8.11
+parameterized-trigger:2.21
+jquery:1.7.2-1
+token-macro:1.9
+customize-build-now:1.0
