@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# DOCKER_OPTS
+INSECURE_REGISTRY=${INSECURE_REGISTRY:-}
+
 # First, make sure that cgroups are mounted correctly.
 CGROUP=/sys/fs/cgroup
 : {LOG:=stdio}
@@ -94,7 +97,7 @@ else
 	then
 		docker -d $DOCKER_DAEMON_ARGS &>/var/log/docker.log &
 	else
-		docker -d $DOCKER_DAEMON_ARGS &
+		docker -d $INSECURE_REGISTRY $DOCKER_DAEMON_ARGS &
 	fi
 	(( timeout = 60 + SECONDS ))
 	until docker info >/dev/null 2>&1

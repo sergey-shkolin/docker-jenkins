@@ -15,7 +15,8 @@ RUN apt-get install -y --no-install-recommends  \
     openjdk-7-jre \
     wget \
     unzip \
-    lxc-docker
+    lxc-docker \
+    git
     
 ADD wrapdocker /usr/local/bin/wrapdocker
 RUN chmod +x /usr/local/bin/wrapdocker
