@@ -14,5 +14,7 @@ jquery:1.7.2-1
 token-macro:1.9
 customize-build-now:1.0
 mailer:1.15
-managed-scripts:1.2.1
 thinBackup:1.7.4
+managed-scripts:1.2.1
+config-file-provider:2.9.3
+token-macro:1.10
