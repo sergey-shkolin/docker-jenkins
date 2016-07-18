@@ -17,16 +17,16 @@ RUN apt-get install -y --no-install-recommends  \
     unzip \
     lxc-docker \
     git
-    
+
 ADD wrapdocker /usr/local/bin/wrapdocker
 RUN chmod +x /usr/local/bin/wrapdocker
 VOLUME /var/lib/docker
 
 RUN groupadd -g 1000 jenkins && \
-    useradd -d /home/jenkins -s /bin/bash -m jenkins -u 1000 -g jenkins && \ 
+    useradd -d /home/jenkins -s /bin/bash -m jenkins -u 1000 -g jenkins && \
     usermod -a -G docker jenkins
 
-RUN wget -O /home/jenkins/swarm-client-2.0-jar-with-dependencies.jar http://maven.jenkins-ci.org/content/repositories/releases/org/jenkins-ci/plugins/swarm-client/2.0/swarm-client-2.0-jar-with-dependencies.jar
+RUN wget -O /home/jenkins/swarm-client-2.1-jar-with-dependencies.jar http://maven.jenkins-ci.org/content/repositories/releases/org/jenkins-ci/plugins/swarm-client/2.1/swarm-client-2.1-jar-with-dependencies.jar
 
 ADD jenkins-slave-run.sh /
 CMD ["/jenkins-slave-run.sh"]
