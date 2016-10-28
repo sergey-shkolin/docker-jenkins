@@ -1,9 +1,6 @@
 FROM ubuntu:14.04
 
-ENV DEBIAN_FRONTEND noninteractive \
-    SWARM_VERSION=2.2 \
-    DOCKER_VERSION=1.12.0
-    
+ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update -qq && \
     apt-get install -y --no-install-recommends apt-transport-https ca-certificates software-properties-common
@@ -31,7 +28,7 @@ RUN groupadd -g 1000 jenkins && \
     useradd -d /home/jenkins -s /bin/bash -m jenkins -u 1000 -g jenkins && \
     usermod -a -G docker jenkins
 
-RUN wget -O /home/jenkins/swarm-client.jar http://repo.jenkins-ci.org/releases/org/jenkins-ci/plugins/swarm-client/${SWARM_VERSION}/swarm-client-${SWARM_VERSION}-jar-with-dependencies.jar
+RUN wget -O /home/jenkins/swarm-client.jar http://repo.jenkins-ci.org/releases/org/jenkins-ci/plugins/swarm-client/2.2/swarm-client-2.2-jar-with-dependencies.jar
 
 ADD jenkins-slave-run.sh /
 CMD ["/jenkins-slave-run.sh"]
