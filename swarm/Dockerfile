@@ -19,7 +19,7 @@ RUN apt-get install -y --no-install-recommends  \
     openjdk-8-jdk \
     wget \
     unzip \
-    docker-engine=${DOCKER_VERSION}-0~trusty \
+    docker-engine=1.12.0-0~trusty \
     git \
     gitstats
 
