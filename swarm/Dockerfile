@@ -1,22 +1,27 @@
 FROM ubuntu:14.04
 
-ENV DEBIAN_FRONTEND noninteractive
+ENV DEBIAN_FRONTEND noninteractive \
+    SWARM_VERSION=2.2 \
+    DOCKER_VERSION=1.12.0
+    
 
 RUN apt-get update -qq && \
-    apt-get install -y --no-install-recommends apt-transport-https ca-certificates
-RUN echo "deb https://get.docker.com/ubuntu docker main" > /etc/apt/sources.list.d/docker.list && \
-    apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 36A1D7869245C8950F966E92D8576A8BA88D21E9 && \
+    apt-get install -y --no-install-recommends apt-transport-https ca-certificatesi software-properties-common
+RUN echo "deb https://apt.dockerproject.org/repo ubuntu-trusty main" > /etc/apt/sources.list.d/docker.list && \
+    apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D && \
+    add-apt-repository ppa:openjdk-r/ppa -y && \
     apt-get update -qq
 
 RUN apt-get install -y --no-install-recommends  \
     curl \
     lxc \
     iptables \
-    openjdk-7-jre \
+    openjdk-8-jdk \
     wget \
     unzip \
-    lxc-docker \
-    git
+    docker-engine=${DOCKER_VERSION}-0~trusty \
+    git \
+    gitstats
 
 ADD wrapdocker /usr/local/bin/wrapdocker
 RUN chmod +x /usr/local/bin/wrapdocker
@@ -26,7 +31,7 @@ RUN groupadd -g 1000 jenkins && \
     useradd -d /home/jenkins -s /bin/bash -m jenkins -u 1000 -g jenkins && \
     usermod -a -G docker jenkins
 
-RUN wget -O /home/jenkins/swarm-client-2.1-jar-with-dependencies.jar http://maven.jenkins-ci.org/content/repositories/releases/org/jenkins-ci/plugins/swarm-client/2.1/swarm-client-2.1-jar-with-dependencies.jar
+RUN wget -O /home/jenkins/swarm-client.jar http://repo.jenkins-ci.org/releases/org/jenkins-ci/plugins/swarm-client/${SWARM_VERSION}/swarm-client-${SWARM_VERSION}-jar-with-dependencies.jar
 
 ADD jenkins-slave-run.sh /
 CMD ["/jenkins-slave-run.sh"]
