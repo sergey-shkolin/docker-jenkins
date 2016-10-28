@@ -6,7 +6,7 @@ ENV DEBIAN_FRONTEND noninteractive \
     
 
 RUN apt-get update -qq && \
-    apt-get install -y --no-install-recommends apt-transport-https ca-certificatesi software-properties-common
+    apt-get install -y --no-install-recommends apt-transport-https ca-certificates software-properties-common
 RUN echo "deb https://apt.dockerproject.org/repo ubuntu-trusty main" > /etc/apt/sources.list.d/docker.list && \
     apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D && \
     add-apt-repository ppa:openjdk-r/ppa -y && \
