@@ -13,7 +13,8 @@ RUN apt-get update && \
     openjdk-8-jdk \
     git \
     gitstats \
-    build-essential
+    build-essential \
+    rpl
 
 RUN groupadd -g 1000 jenkins && \
     useradd -d /home/jenkins -s /bin/bash -m jenkins -u 1000 -g jenkins
