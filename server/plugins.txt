@@ -12,7 +12,7 @@ copyartifact:1.38.1
 credentials:2.1.13
 customize-build-now:1.1
 cvs:2.13
-delivery-pipeline-plugin:0.10.13
+delivery-pipeline-plugin:0.10.3
 envinject:1.93.1
 external-monitor-job:1.5
 git:3.1.0
