@@ -28,7 +28,7 @@ RUN groupadd -g 1000 jenkins && \
     useradd -d /home/jenkins -s /bin/bash -m jenkins -u 1000 -g jenkins && \
     usermod -a -G docker jenkins
 
-RUN wget -O /home/jenkins/swarm-client.jar http://repo.jenkins-ci.org/releases/org/jenkins-ci/plugins/swarm-client/2.2/swarm-client-2.2-jar-with-dependencies.jar
+RUN wget -O /home/jenkins/swarm-client.jar http://repo.jenkins-ci.org/releases/org/jenkins-ci/plugins/swarm-client/3.3/swarm-client-3.3.jar
 
 ADD jenkins-slave-run.sh /
 CMD ["/jenkins-slave-run.sh"]
